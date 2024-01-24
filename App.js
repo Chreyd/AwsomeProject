@@ -1,21 +1,27 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-
+import { StyleSheet, Text, View } from "react-native";
+import React from "react";
 
 export default function App() {
+  const name = "manu";
+
+  const getName = (firstName, secondName, thirdName) => {
+    return firstName + " " + secondName + " " + thirdName;
+    // return `${firstName} ${secondName} ${thirdName}`;
+  };
+
   return (
     <View style={styles.container}>
-      <Text>Hello</Text>
-      <StatusBar style="auto" />
+      <Text style={styles.text}>je m'appelle {getName("roger", "stan", "frank")}</Text>
     </View>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  text: {
+    fontSize: 30,
   },
 });

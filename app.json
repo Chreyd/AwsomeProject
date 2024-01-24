@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "AwsomeProject",
-    "slug": "AwsomeProject",
+    "slug": "awsomeproject",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -25,6 +25,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "6fa400d1-0086-4fe1-a288-abea16d93a55"
+      }
+    },
+    "owner": "chreyd"
   }
 }
