@@ -5,11 +5,11 @@ const Person = (props) => {
   return (
     <View>
       {props.age ? (
-        <Text>
-          Je suis: {props.name} et j'ai {props.age} ans
+        <Text style={styles.text}>
+        -  Je suis: {props.name} , j'ai {props.age} ans et je suis un {props.children}
         </Text>
       ) : (
-        <Text>Je suis: .{props.name}</Text>
+        <Text style={styles.text}>-  Je suis: .{props.name} et je suis un {props.children}</Text>
       )}
     </View>
   );
@@ -19,9 +19,9 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text style={styles.text}></Text>
-      <Person name="Roger" age="43" />
-      <Person name="Stan" />
-      <Person name="VAR" age="58" />
+      <Person name="Roger" age="43" >Animal</Person>
+      <Person name="Stan" >Humain</Person>
+      <Person name="Steve" age="58" >Humain</Person>
     </View>
   );
 }
@@ -32,6 +32,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   text: {
-    fontSize: 30,
+    fontSize: 20,
+    textAlign: "center",
+    marginVertical: 4,
   },
 });
