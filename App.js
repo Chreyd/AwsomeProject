@@ -1,4 +1,11 @@
-import { StyleSheet, Text, View, Button, TextInput } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  TextInput,
+  ScrollView,
+} from "react-native";
 import React, { useState } from "react";
 
 export default function App() {
@@ -18,15 +25,17 @@ export default function App() {
    */
   return (
     <View style={styles.container}>
-      {family.map((e) => {
-        return (
-          <View key={e.id} style={styles.viewList}>
-            <Text style={styles.text}>
-               Nom : {e.name} | âge: {e.age}
-            </Text>
-          </View>
-        );
-      })}
+      <ScrollView>
+        {family.map((e) => {
+          return (
+            <View key={e.id} style={styles.viewList}>
+              <Text style={styles.text}>
+                Nom : {e.name} | âge: {e.age}
+              </Text>
+            </View>
+          );
+        })}
+      </ScrollView>
     </View>
   );
 }
@@ -42,7 +51,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: "center",
     marginVertical: 4,
-    color: "#fff"
+    color: "#fff",
   },
   input: {
     height: 40,
@@ -53,10 +62,10 @@ const styles = StyleSheet.create({
     width: "90%",
     borderRadius: 20,
   },
-  viewList:{
+  viewList: {
     marginTop: 30,
     backgroundColor: "purple",
-    padding:19,
-    marginHorizontal: 10
-  }
+    padding: 39,
+    marginHorizontal: 10,
+  },
 });
