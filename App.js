@@ -5,37 +5,39 @@ import {
   Button,
   TextInput,
   ScrollView,
+  FlatList,
 } from "react-native";
 import React, { useState } from "react";
 
 export default function App() {
   const obj = [
-    { id: 1, name: "stan1", age: 21 },
-    { id: 2, name: "stan2", age: 22 },
-    { id: 3, name: "stan3", age: 23 },
-    { id: 4, name: "stan4", age: 24 },
-    { id: 5, name: "stan5", age: 25 },
-    { id: 6, name: "stan6", age: 26 },
+    { id: "1", name: "stan1", age: 21 },
+    { id: "2", name: "stan2", age: 22 },
+    { id: "3", name: "stan3", age: 23 },
+    { id: "4", name: "stan4", age: 24 },
+    { id: "5", name: "stan5", age: 25 },
+    { id: "6", name: "stan6", age: 26 },
   ];
 
   const [family, setFamily] = useState(obj);
-  // console.log(family);
 
-  /*   La méthode map() crée un nouveau tableau avec les résultats de l'appel d'une fonction fournie sur chaque élément du tableau appelant.
-   */
+  const renderItem = ({ item }) => (
+    <View style={styles.viewList}>
+      <Text style={styles.text}>
+        Nom : {item.name} | âge: {item.age}
+      </Text>
+    </View>
+  );
+
+  // au niveau du composant FlatList le chargement des élément qui ne s'affiche pas n'est pass fait tant que le scroll n'a pas été effectué. C'est mieu de l'utiliser pour un meilleur chargement des données
   return (
     <View style={styles.container}>
-      <ScrollView>
-        {family.map((e) => {
-          return (
-            <View key={e.id} style={styles.viewList}>
-              <Text style={styles.text}>
-                Nom : {e.name} | âge: {e.age}
-              </Text>
-            </View>
-          );
-        })}
-      </ScrollView>
+      <FlatList
+        data={family}
+        renderItem={renderItem}
+        // renderItem={(item) => renderItem(item)}
+        keyExtractor={(item) => item.id}
+      />
     </View>
   );
 }
