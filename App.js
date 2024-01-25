@@ -1,37 +1,27 @@
-import { StyleSheet, Text, View, Button } from "react-native";
+import { StyleSheet, Text, View, Button, TextInput } from "react-native";
 import React, { useState } from "react";
 
 export default function App() {
-  const obj = {
-    name: "Frank",
-    age: 23,
-  };
-
-  const [info, setInfo] = useState(obj);
-
-  /*   const [info, setInfo]=useState({
-    name: "Frank",
-    age: 23,
-  }); */
-
-  const handlePress = () => {
-    info.name == "Frank"
-      ? setInfo({ name: "Clark", age: 45 })
-      : setInfo({ name: "Frank", age: 23 });
-  };
+  const [text, setText] = useState(" ");
+  const [name, setName] = useState();
+  const [age, setAge] = useState();
 
   return (
     <View style={styles.container}>
-      <View>
-        <Text>Nom : {info.name}</Text>
-        <Text>Age : {info.age}</Text>
-      </View>
-      <Button
-        onPress={() => handlePress()}
-        title="Cliquez ICI"
-        color="red"
-        accessibilityLabel="Learn more about this purple button"
-        disabled={false}
+      <Text>Nom: {name} </Text>
+      <TextInput
+        style={styles.input}
+        // value={text}
+        onChangeText={(value) => setName(value)}
+        placeholder="indiquez votre nom"
+      />
+      <Text>Age: {age} </Text>
+      <TextInput
+        style={styles.input}
+        // value={text}
+        onChangeText={(value) => setAge(value)}
+        placeholder="indiquez votre âge"
+        keyboardType='number-pad'
       />
     </View>
   );
@@ -39,12 +29,23 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
+    // justifyContent: "center",
     alignItems: "center",
+    backgroundColor: "#BFBF",
+    paddingVertical: 30,
   },
   text: {
     fontSize: 20,
     textAlign: "center",
     marginVertical: 4,
+  },
+  input: {
+    height: 40,
+    backgroundColor: "#fff",
+    borderWidth: 1,
+    borderColor: "#000",
+    padding: 10,
+    width: "90%",
+    borderRadius: 20,
   },
 });
