@@ -2,30 +2,32 @@ import { StyleSheet, Text, View, Button } from "react-native";
 import React, { useState } from "react";
 
 export default function App() {
+  const obj = {
+    name: "Frank",
+    age: 23,
+  };
 
-  const [name, setName]=useState("Stan");
+  const [info, setInfo] = useState(obj);
 
-  const handlePress = ()=>{
+  /*   const [info, setInfo]=useState({
+    name: "Frank",
+    age: 23,
+  }); */
 
-    name=="Stan"?(setName('Pat')) : (setName('Stan')) ;
-
-
-
-    // if (name=="Stan") {
-    //   setName('Pat');
-    // } else {
-    //   setName('Stan')
-    // }
-  }
+  const handlePress = () => {
+    info.name == "Frank"
+      ? setInfo({ name: "Clark", age: 45 })
+      : setInfo({ name: "Frank", age: 23 });
+  };
 
   return (
     <View style={styles.container}>
       <View>
-        <Text> Son nom est {name}</Text>
+        <Text>Nom : {info.name}</Text>
+        <Text>Age : {info.age}</Text>
       </View>
       <Button
-        onPress={handlePress}
-        // onPress={()=>setName('pat')}
+        onPress={() => handlePress()}
         title="Cliquez ICI"
         color="red"
         accessibilityLabel="Learn more about this purple button"
